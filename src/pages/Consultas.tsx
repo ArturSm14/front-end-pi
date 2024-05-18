@@ -16,7 +16,7 @@ import { AxiosResponse } from "axios";
 
 
 function Consultas() {
-  type Consulta = {
+  type Agendamento = {
     id : number;
     nomePaciente : String;
     medico : String;
@@ -148,18 +148,22 @@ function Consultas() {
             <TableHead>Data e Hora da Consulta</TableHead>
             <TableHead>Data Cadastro</TableHead>
           </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell>uashaisalskals</TableCell>
-              <TableCell>Artur</TableCell>
-              <TableCell>Carlos Alberto</TableCell>
-              <TableCell>Clinica Sim</TableCell>
-              <TableCell>arturaus@gmail.com</TableCell>
-              <TableCell>Agendado</TableCell>
-              <TableCell>14/11/2020</TableCell>
-              <TableCell>10/11/2020</TableCell>
-            </TableRow>
-          </TableBody>
+          {agendamentos.map((agendamento : Agendamento) => {
+            return(
+                <TableBody>
+                  <TableRow key={agendamento.id}>
+                    <TableCell>{agendamento.id}</TableCell>
+                    <TableCell>{agendamento.nomePaciente}</TableCell>
+                    <TableCell>{agendamento.medico}</TableCell>
+                    <TableCell>{agendamento.clinica}m</TableCell>
+                    <TableCell>{agendamento.email}</TableCell>
+                    <TableCell>{agendamento.status}</TableCell>
+                    <TableCell>{agendamento.dataHoraAgendamento}</TableCell>
+                    <TableCell>{agendamento.dataCadastro}</TableCell>
+                  </TableRow>
+                </TableBody>
+            )
+          })}
         </Table>
       </div>
     </div>
